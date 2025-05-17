@@ -1,0 +1,20 @@
+{
+  "name": "analizador-antlr4",
+  "version": "1.0.0",
+  "type": "module",
+  "scripts": {
+    "clean": "if exist gramatica\\generated rd /s /q gramatica\\generated & if exist .antlr rd /s /q .antlr",
+    "generate": "java -jar antlr-4.13.2-complete.jar -Dlanguage=JavaScript -o gramatica/generated gramatica/LogicGrammar.g4 -visitor -listener",
+    "postgenerate": "node fix-exports.js",
+    "start": "node index.js input.txt",
+    "postinstall": "npm run clean && npm run generate"
+  },
+  "dependencies": {
+    "antlr4": "^4.13.2"
+  },
+  "main": "index.js",
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": ""
+}
